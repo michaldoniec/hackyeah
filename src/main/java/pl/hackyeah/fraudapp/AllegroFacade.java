@@ -9,19 +9,20 @@ import java.util.List;
 @Component
 public class AllegroFacade {
 
+    public static final long LOCAL_VERSION = 1509099399L;
+    public static final String WEB_API_KEY = "8856d759";
+    public static final Integer COUNTRY_CODE = 1;
+
     public void doAll(){
         ServiceService serviceService = new ServiceService();
         ServicePort allegro = serviceService.getServicePort();
 
-        Integer countryCode = 1;
-        String webApiKey = "8856d759";
-        Long localVersion = 1509099399L;
         DoLoginRequest doLoginRequest = new DoLoginRequest();
         doLoginRequest.setUserLogin("TomBujak");
         doLoginRequest.setUserPassword("Lolek123!@#");
-        doLoginRequest.setCountryCode(countryCode);
-        doLoginRequest.setLocalVersion(localVersion);
-        doLoginRequest.setWebapiKey(webApiKey);
+        doLoginRequest.setCountryCode(COUNTRY_CODE);
+        doLoginRequest.setLocalVersion(LOCAL_VERSION);
+        doLoginRequest.setWebapiKey(WEB_API_KEY);
 
         DoLoginResponse doLoginResponse =  allegro.doLogin(doLoginRequest);
         if (doLoginResponse.getSessionHandlePart() != "") {
@@ -34,15 +35,15 @@ public class AllegroFacade {
         CatInfoType catInfoType = new CatInfoType();
 //        catInfoType.set
         DoGetCatsDataRequest doGetCatsDataRequest = new DoGetCatsDataRequest();
-        doGetCatsDataRequest.setWebapiKey(webApiKey);
-        doGetCatsDataRequest.setCountryId(countryCode);
+        doGetCatsDataRequest.setWebapiKey(WEB_API_KEY);
+        doGetCatsDataRequest.setCountryId(COUNTRY_CODE);
 
 
         ///
 
         DoGetItemsListRequest itemsreq = new DoGetItemsListRequest();
-        itemsreq.setCountryId(countryCode);
-        itemsreq.setWebapiKey(webApiKey);
+        itemsreq.setCountryId(COUNTRY_CODE);
+        itemsreq.setWebapiKey(WEB_API_KEY);
         Integer scope=0,size=0,offset=0;
         itemsreq.setResultOffset(offset);
         itemsreq.setResultSize(size);
