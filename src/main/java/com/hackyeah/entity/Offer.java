@@ -11,8 +11,11 @@ public class Offer {
 	private String title;
 	private String description;
 	private LocalDate dateOfSale;
+	private Boolean hasVat;
+	private Boolean hasVatWithMargin;
+	private Boolean isNewProduct;
+	private Boolean isVatFree;
 	private BigInteger sellerId;
-
 
 
 	public BigDecimal getOfferId() {
@@ -61,5 +64,37 @@ public class Offer {
 
 	public void setSellerId(BigInteger sellerId) {
 		this.sellerId = sellerId;
+	}
+
+	public Boolean getHasVat() {
+		return hasVat;
+	}
+
+	public void setHasVat(Boolean hasVat) {
+		this.hasVat = hasVat;
+	}
+
+	public Boolean getHasVatWithMargin() {
+		return hasVatWithMargin;
+	}
+
+	public void setHasVatWithMargin(Boolean hasVatWithMargin) {
+		this.hasVatWithMargin = hasVatWithMargin;
+	}
+
+	public Boolean getNewProduct() {
+		return isNewProduct;
+	}
+
+	public void setNewProduct(Boolean newProduct) {
+		isNewProduct = newProduct;
+	}
+
+	public Boolean getVatFree() {
+		return isVatFree;
+	}
+
+	public void setVatFree(Boolean vatFree) {
+		isVatFree = vatFree;
 	}
 }
