@@ -57,15 +57,30 @@ public class AllegroFacade {
         ArrayOfString categories = new ArrayOfString();
         categories.getItem().add("165"); // TELEFONY
         fotcat.setFilterValueId(categories);
+
+        FilterOptionsType newModel = new FilterOptionsType();
+            newModel.setFilterId("condition");
+        ArrayOfString states = new ArrayOfString();
+        states.getItem().add("new");
+
+        // Dodajemy do gamy filtrów
+        newModel.setFilterValueId(states);
         // Dodajemy do gamy filtrów
         filter.getItem().add(fotcat);
+        filter.getItem().add(newModel);
 
         itemsreq.setFilterOptions(filter);
 
         DoGetItemsListResponse doGetItemsList = allegro.doGetItemsList(itemsreq);
         ArrayOfItemslisttype itemsList = doGetItemsList.getItemsList();
-        itemsList.getItem();
+        List<ItemsListType> allegroItemType = itemsList.getItem();
 
+        for (ItemsListType item : allegroItemType){
+            System.out.println(item.getConditionInfo());
+        }
+
+
+        itemsreq.setFilterOptions(filter);
         //        System.out.println(doGetItemsList);
 //        List<FiltersListType> item = doGetItemsList.getFiltersList().getItem();
 //        // Ograniczyłem też iterację do 1000 jak później widać w ifie , bo nie chciałem odrazu całości przeszukiwać
